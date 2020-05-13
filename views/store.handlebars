@@ -1,22 +1,67 @@
-<h1 class="title">{{ title }}</h1>
-
-<aside>
-  <h2>Filtros</h2>
-</aside>
+<h1>Lista de productos</h1>
 
 <nav>
+  Filtro por precio
+  <select>
+    <option value="" disabled="true" selected="true">Selecciona una opción...</option>
+    <option value="60">Menor a $60</option>
+    <option value="100">Menor a $100</option>
+    <option value="130">Menor a $130</option>
+    <option value="150">Menor a $150</option>
+    <option value="170">Menor a $170</option>
+    <option value="1000">Cualquier valor</option>
 
+  </select>
+
+  <p>
+    <label for="amount">Price range:</label>
+    <input type="text" id="amount" readonly style="border:0; color:#f6931f; font-weight:bold;">
+  </p>
+  <div id="slider-range"></div>
+  <button class="searchbtn">Buscar</button>
+
+
+  <input type="text" class="search_input">
 </nav>
 
-<h2>Lista de productos</h2>
-<main class="productlist">
-  {{#each products}}
-  <div class="thumb">
-    <a href="/producto/{{ title }}/{{ id }}" class="thumb__link">
-      <h4 class="thumb__title">{{ title }}</h4>
-      <img class="thumb__img" src="{{ img }}" alt="">
-      <p class="thumb__price">{{ price }}</p>
-    </a>
-  </div>
-  {{/each}}
-</main>
+<table class="table">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Nombre</th>
+      <th>Precio</th>
+      <th>Peso</th>
+      <th>Calificación</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each list}}
+      <tr>
+        <td>{{ @index }}</td>
+        <td>
+          <a href="/producto/{{ name }}/{{ _id }}">
+            {{ name }}
+          </a>
+        </td>
+        <td class="product__price">$ {{ price }}</td>
+        <td>{{ weight }}</td>
+        <td>{{ rating }}</td>
+        <td>
+          <button class="product__add_to_cart"
+            data-img="{{ img }}"
+            data-name="{{ name }}"
+            data-price="{{ price }}"
+            data-id="{{ _id }}">
+            Agregar al carrito
+          </button>
+        </td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>
+
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="/scripts/client.js"></script>

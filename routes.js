@@ -13,25 +13,98 @@ app.get('/', function (request, res) {
   // ruta para la lista de productos con handlebars
 app.get('/store', function (req, res) {
 
-    if(req.query.price_lt){}
+    console.log(req.query);
 
-    if(req.query.price_gt){}
+    
+    var filters = {
+      $and: []
+    };
 
-    if(req.query.search){}
+    // si el usuario pidió filtrar por precio
+    if(req.query.price_lt){
+      filters.$and.push({
+        price: {
+          $lte: parseInt(req.query.price_lt)
+        }
+      });
+    }
+
+    // si el usuario pidió filtrar por precio
+    if(req.query.price_gt){
+      filters.$and.push({
+        price: {
+          $gte: parseInt(req.query.price_gt)
+        }
+      });
+    }
+
+    if(req.query.search){
+      filters.$and.push({
+        name: {
+          $regex: new RegExp(req.query.search, 'i'),
+        }
+      });
+    }
+
+    if(filters.$and.length === 0){
+      delete filters.$and;
+    }
+
+    var sortings = {};
+    if(req.query.sort == 'price_desc'){
+      sortings.price = -1;
+    }
+    if(req.query.sort == 'price_asc'){
+      sortings.price = 1;
+    }
+
 
     // Get the documents collection
     const collection = db.collection('products');
     // Find some documents
-    collection.find({}).toArray(function(err, docs) {
+    collection.find(filters).toArray(function(err, docs) {
         assert.equal(err, null);
         
         // objeto contexto
         var context = {
-          title: 'El título cambiado',
-          products: products,
+          list: docs,
         }
         // renderizar vista
         res.render('store', context);
+    });
+
+    app.get('/checkout', function (req, res) {
+      console.log(req.query.error);
+      var context = {
+        showError: req.query.error,
+      }
+      res.render('checkout', context);
+    });
+  
+    // recibir información del usuario
+    app.post('/checkout', function (req, res) {
+      console.log(req.body);
+  
+      var { firstname, address, products } = req.body;
+  
+      req.body.creation_date = new Date();
+  
+      if(!firstname || !address || !products){
+        //res.send('error');
+        res.redirect('/checkout?error=true');
+        return;
+      }
+  
+      req.body.products = JSON.parse(req.body.products);
+  
+      const collection = db.collection('orders');
+      collection.insertOne(req.body);
+      //res.send('test');
+      res.redirect('/confirmation');
+    });
+  
+    app.get('/confirmation', function(req, res) {
+      res.send('gracias por tu compra');
     });
       
   });

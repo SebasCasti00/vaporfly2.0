@@ -1,50 +1,37 @@
 const MongoClient = require('mongodb').MongoClient;
 const assert = require('assert');
-
-// importar express
+const url = 'mongodb://localhost:27017';
+const dbName = 'Nike';
+const client = new MongoClient(url);
 const express = require('express');
-// importar path
 const path = require('path');
-// importart express-handlebars
 const exphbs = require('express-handlebars');
-
-// importar productos
-const configureRoutes = require('./routes');
-
-// instanciar servidor de express
 const app = express();
 
-// registrar motor de render para handlebars
-app.engine('handlebars', exphbs());
-// use el motor de render handlebars
-app.set('view engine', 'handlebars');
+app.use(express.urlencoded({ extended: true }));
 
+const configureRoutes = require('./routes');
 
-// Connection URL
-const url = 'mongodb://localhost:27017';
-
-// Database Name
-const dbName = 'NikeStore';
-
-// Create a new MongoClient
-const client = new MongoClient(url);
+app.engine('handlebars', exphbs()); //Todos los archivos handlebars, los va a renderizar usando exphbs
+app.set('view engine', 'handlebars'); //usar el motor de render Handlebars
+app.use(express.static('public')); //static hace que la carpeta public sea PUBLICA (NO QUITAR)
 
 // Use connect method to connect to the Server
-client.connect(function(err) {
-  assert.equal(null, err);
-  console.log("Connected successfully to server");
+client.connect(function (err) {
+    assert.equal(null, err);
+    console.log("Connected successfully to server");
 
-  const db = client.db(dbName);
+    const db = client.db(dbName);
 
-  configureRoutes(app, db);
+    configureRoutes(app, db);
+
 });
 
-// configurar carpeta public como estática o pública
-app.use(express.static('public'));
-
-
-
-  // iniciar servidor en puerto 3000
 app.listen(3000, function () {
     console.log('servidor iniciado en puerto 3000');
-  });
+});
+
+
+
+
+
