@@ -10,6 +10,37 @@ app.get('/', function (request, res) {
     res.sendFile(path.join(__dirname, '/public/index.html'));
   });
 
+
+  app.get('/producto/:name/:id', function (req, res) {
+    if(req.params.id.length != 24){
+      res.redirect('/404');
+      return;
+    }
+
+    const filter = {
+      _id: {
+        $eq: new ObjectId(req.params.id)
+      }
+    };
+    // Get the documents collection
+    const collection = db.collection('products');
+    // Find some documents
+    collection.find(filter).toArray(function(err, docs) {
+      assert.equal(err, null);
+
+      if(docs.length == 0){
+        res.redirect('/404');
+        return;
+      }
+      
+      // crear el contexto
+      var context = docs[0];
+      // renderizar el archivo list.handlebars con el contexto creado
+      res.render('product', context);
+    });
+  });
+
+  
   // ruta para la lista de productos con handlebars
 app.get('/store', function (req, res) {
 
@@ -37,6 +68,14 @@ app.get('/store', function (req, res) {
         }
       });
     }
+
+    if (req.query.gender_) {
+      filters.$and.push({
+          gender: {
+              $eq: (req.query.gender_)
+          }
+      });
+  }
 
     if(req.query.search){
       filters.$and.push({

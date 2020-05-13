@@ -1,3 +1,8 @@
+var men = document.querySelector('.filter__men');
+var women = document.querySelector('.filter__women');
+var low = document.querySelector('.order__low');
+var high = document.querySelector('.order__high');
+var rating = document.querySelector('.order__rating');
 
 // seleccionamos el elemento select
 var select = document.querySelector('select');
@@ -34,5 +39,35 @@ button.addEventListener('click', function(){
   var search = input.value;
   url = url + '&search=' + search;
   
+  location.href = url;
+});
+
+men.addEventListener('click', function (event) {
+  var url = location.pathname;
+  url = url + '?gender_=' + ['men'];
+  location.href = url;
+});
+
+women.addEventListener('click', function (event) {
+  var url = location.pathname;
+  url = url + '?gender_=' + ['women'];
+  location.href = url;
+});
+
+rating.addEventListener('click', function (event) {
+  var url = location.pathname;
+  url = url + '?sort=rating';
+  location.href = url;
+});
+
+low.addEventListener('click', function (event) {
+  var url = location.pathname;
+  url = url + '?sort=price_desc';
+  location.href = url;
+});
+
+high.addEventListener('click', function (event) {
+  var url = location.pathname;
+  url = url + '?sort=price_asc';
   location.href = url;
 });

@@ -13,6 +13,16 @@
 
   </select>
 
+<div class="order">
+            <p class="order__rating"><strong>Popular</strong></p>
+            <p class="order__low"><strong>Price: Low to high</strong></p>
+            <p class="order__high"><strong>Price: High to low</strong></p>
+        </div>
+  <ul>
+    <h4>GENDER</h4>
+    <li class="filter__men"><a href="">Men</a></li>
+    <li class="filter__women"><a href="">Women</a></li>
+  </ul>
   <p>
     <label for="amount">Price range:</label>
     <input type="text" id="amount" readonly style="border:0; color:#f6931f; font-weight:bold;">
@@ -40,7 +50,7 @@
       <tr>
         <td>{{ @index }}</td>
         <td>
-          <a href="/producto/{{ name }}/{{ _id }}">
+          <a href="/products/{{ name }}/{{ _id }}">
             {{ name }}
           </a>
         </td>
