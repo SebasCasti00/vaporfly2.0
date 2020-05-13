@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css?family=Odibee+Sans&display=swap'); 
+@import url('https://fonts.googleapis.com/css?family=Anton&display=swap');
+* {
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+  }
+  
+  body, html {
+    margin: 0px;
+    font-family: 'Odibee Sans', cursive;
+    font-size: 16px;
+  }
+
+  body{
+    margin: 0;    
+    background: linear-gradient(to right, rgba(66,66,66,1) 0%, rgba(112,112,112,1) 100%);
+ }
+
+
+ @import 'mainnav';
+ @import 'principal';
+ @import 'newsletter';
+ @import 'publicidad';
+ @import 'caracteristics';
+ @import 'footer';
+ @import 'specs';
+ @import 'gallery';

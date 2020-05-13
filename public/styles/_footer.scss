@@ -1,0 +1,40 @@
+.footer{
+    display: block;
+    margin: 0px;
+    background: linear-gradient(to left, rgba(66,66,66,1) 0%, rgba(112,112,112,1) 100%);
+    
+}
+
+.footer__container{
+    
+    margin-left: 200px;
+    margin-right: 200px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.footer__column{
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+}
+
+.footer__link{
+    margin: 10px;
+    text-decoration: none;
+    color: whitesmoke;
+}
+
+.footer__title{
+    font-size: large;
+    color: whitesmoke;
+}
+
+ul{
+    list-style-type: none;
+    padding: 0px;
+}
+
+p{
+    text-decoration: whitesmoke;
+}

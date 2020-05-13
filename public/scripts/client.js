@@ -1,0 +1,1 @@
+//Interacción del cliente con la página

@@ -1,0 +1,33 @@
+.specs{
+    margin: 20px 0px auto;
+    display: flex;
+    justify-content: center;
+    color: whitesmoke;
+    padding: 20px;
+
+    ul{
+        margin: auto;
+    }
+
+    li{
+        list-style-type: disc;
+        margin: 10px;
+        font-size: 30px;
+    }
+
+    &__title{
+        margin-top: auto;
+        margin-bottom: auto;
+        color: whitesmoke;
+        font-size: 3em;
+    }
+
+    &__img{
+        width: 400px;
+    }
+
+    &__text{
+        margin-top: 200px;
+        margin-right: 50px;
+    }
+}

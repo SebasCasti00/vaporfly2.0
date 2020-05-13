@@ -1,0 +1,48 @@
+$w: 1000px;
+$h: 1100px;
+.slider{
+    width: $w;
+    height: $h;
+    overflow: hidden;
+    position: relative;
+    margin: 30px auto;
+
+    &__text{
+        text-align: center;
+        color: whitesmoke;
+        font-size: 5em;
+    }
+
+    &__strip{
+        display: flex;
+        transition: transform .5s ease-in-out;
+    }
+    &__img{
+        width: $w;
+        height: $h;
+        object-fit: cover;
+        flex-shrink: 0;
+    }
+    
+    &__btn{
+        position: absolute;
+        top: 600px;
+        box-shadow: 0px 1px 0px 0px #474347;
+        border-radius:15px;
+        border:0px solid #575457;
+        display:inline-block;
+        cursor:pointer;
+        color:whitesmoke;
+        font-family: 'Odibee Sans', cursive;
+        font-size: 20px;
+        padding:12px 16px;
+        text-decoration:none;
+        background-color:#4f4d4f;
+    }
+    &__btn--left{
+        left: 10px;
+    }
+    &__btn--right{
+        right: 10px;
+    }
+}

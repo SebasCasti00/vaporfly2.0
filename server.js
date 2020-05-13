@@ -1,43 +1,44 @@
+// importar express
 const express = require('express');
-const exphs = require('express-handlebars');
-/*
-const bodyParser = require('body-parser');
+// importar path
+const path = require('path');
+// importart express-handlebars
+const exphbs = require('express-handlebars');
 
-const MongoClient = require('mongodb').MongoClient;
-const assert = require('assert');
-const createRoutes = require('./routes.js');
+// importar productos
+const products = require('./products');
 
-
+// instanciar servidor de express
 const app = express();
 
-app.use(express.static('public'));
-app.use(express.urlencoded({extended:true}));
-
-app.engine('handlebars', exphs());
+// registrar motor de render para handlebars
+app.engine('handlebars', exphbs());
+// use el motor de render handlebars
 app.set('view engine', 'handlebars');
 
+// configurar carpeta public como estática o pública
+app.use(express.static('public'));
 
-MONGO WTF OJO CON EL LOCALHOST ACA..
-const url= 'mongo://localhost:27017;
-const dbName = 'store';
-const client = new MongoClient(url, { useNewUrlParser: true, useUnifiedTopology: true});
+// configurar ruta inicial
+app.get('/', function (request, res) {
+    console.log('hola en la consola');
+    // response.send('hola en chrome');
+    // responder con un archivo
+    res.sendFile(path.join(__dirname, '/public/index.html'));
+  });
 
+  // ruta para la lista de productos con handlebars
+app.get('/store', function (req, res) {
+    // objeto contexto
+    var context = {
+      title: 'El título cambiado',
+      products: products,
+    }
+    // renderizar vista
+    res.render('store', context);
+  });
 
-client.connect(function(err){
-    assert.equal(null, err);
-
-    console.log('conexión');
-
-    const db = client.db(dbName);
-
-    createRoutes(app, db);
-
-    app.listen(3000, ()=>{
-        console.log("Iniciado puerto 3k");
-    });
-});
-*/
-
-const app = express();
-
-
+  // iniciar servidor en puerto 3000
+app.listen(3000, function () {
+    console.log('servidor iniciado en puerto 3000');
+  });
