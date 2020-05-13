@@ -1,3 +1,6 @@
+const MongoClient = require('mongodb').MongoClient;
+const assert = require('assert');
+
 // importar express
 const express = require('express');
 // importar path
@@ -6,7 +9,7 @@ const path = require('path');
 const exphbs = require('express-handlebars');
 
 // importar productos
-const products = require('./products');
+const configureRoutes = require('./routes');
 
 // instanciar servidor de express
 const app = express();
@@ -16,27 +19,30 @@ app.engine('handlebars', exphbs());
 // use el motor de render handlebars
 app.set('view engine', 'handlebars');
 
+
+// Connection URL
+const url = 'mongodb://localhost:27017';
+
+// Database Name
+const dbName = 'NikeStore';
+
+// Create a new MongoClient
+const client = new MongoClient(url);
+
+// Use connect method to connect to the Server
+client.connect(function(err) {
+  assert.equal(null, err);
+  console.log("Connected successfully to server");
+
+  const db = client.db(dbName);
+
+  configureRoutes(app, db);
+});
+
 // configurar carpeta public como estática o pública
 app.use(express.static('public'));
 
-// configurar ruta inicial
-app.get('/', function (request, res) {
-    console.log('hola en la consola');
-    // response.send('hola en chrome');
-    // responder con un archivo
-    res.sendFile(path.join(__dirname, '/public/index.html'));
-  });
 
-  // ruta para la lista de productos con handlebars
-app.get('/store', function (req, res) {
-    // objeto contexto
-    var context = {
-      title: 'El título cambiado',
-      products: products,
-    }
-    // renderizar vista
-    res.render('store', context);
-  });
 
   // iniciar servidor en puerto 3000
 app.listen(3000, function () {
