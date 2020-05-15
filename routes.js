@@ -1,5 +1,5 @@
 const assert = require('assert');
-
+const ObjectId = require('mongodb').ObjectID;
 function configureRoutes(app, db){
 
    // configurar ruta inicial
@@ -11,7 +11,7 @@ app.get('/', function (request, res) {
   });
 
 
-  app.get('/producto/:name/:id', function (req, res) {
+  app.get('/store/:name/:id', function (req, res) {
     if(req.params.id.length != 24){
       res.redirect('/404');
       return;
@@ -23,7 +23,7 @@ app.get('/', function (request, res) {
       }
     };
     // Get the documents collection
-    const collection = db.collection('products');
+    const collection = db.collection('store');
     // Find some documents
     collection.find(filter).toArray(function(err, docs) {
       assert.equal(err, null);
@@ -40,7 +40,7 @@ app.get('/', function (request, res) {
     });
   });
 
-  
+
   // ruta para la lista de productos con handlebars
 app.get('/store', function (req, res) {
 
@@ -99,7 +99,7 @@ app.get('/store', function (req, res) {
 
 
     // Get the documents collection
-    const collection = db.collection('products');
+    const collection = db.collection('store');
     // Find some documents
     collection.find(filters).toArray(function(err, docs) {
         assert.equal(err, null);
@@ -112,6 +112,7 @@ app.get('/store', function (req, res) {
         res.render('store', context);
     });
 
+
     app.get('/checkout', function (req, res) {
       console.log(req.query.error);
       var context = {
@@ -120,6 +121,12 @@ app.get('/store', function (req, res) {
       res.render('checkout', context);
     });
   
+    
+    app.get('/cart', function(req, res) {
+      var context = {};
+      res.render('cart', context);
+
+  });
     // recibir información del usuario
     app.post('/checkout', function (req, res) {
       console.log(req.body);
@@ -143,7 +150,8 @@ app.get('/store', function (req, res) {
     });
   
     app.get('/confirmation', function(req, res) {
-      res.send('gracias por tu compra');
+      var context;
+      res.render('confirmation', context);
     });
       
   });

@@ -1,7 +1,7 @@
 const MongoClient = require('mongodb').MongoClient;
 const assert = require('assert');
 const url = 'mongodb://localhost:27017';
-const dbName = 'Nike';
+const dbName = 'NikeStore';
 const client = new MongoClient(url);
 const express = require('express');
 const path = require('path');
@@ -30,8 +30,3 @@ client.connect(function (err) {
 app.listen(3000, function () {
     console.log('servidor iniciado en puerto 3000');
 });
-
-
-
-
-

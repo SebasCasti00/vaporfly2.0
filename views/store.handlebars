@@ -1,15 +1,16 @@
-<h1>Lista de productos</h1>
+<h1>STORE</h1>
+<div class="mainstore">
 
-<nav>
-  Filtro por precio
+<nav class="container">
+  Filter by price
   <select>
-    <option value="" disabled="true" selected="true">Selecciona una opción...</option>
-    <option value="60">Menor a $60</option>
-    <option value="100">Menor a $100</option>
-    <option value="130">Menor a $130</option>
-    <option value="150">Menor a $150</option>
-    <option value="170">Menor a $170</option>
-    <option value="1000">Cualquier valor</option>
+    <option value="" disabled="true" selected="true">Select an option</option>
+    <option value="60">Less than $60</option>
+    <option value="100">Less than $100</option>
+    <option value="130">Less than $130</option>
+    <option value="150">Less than $150</option>
+    <option value="170">Less than $170</option>
+    <option value="1000">Any</option>
 
   </select>
 
@@ -23,53 +24,47 @@
     <li class="filter__men"><a href="">Men</a></li>
     <li class="filter__women"><a href="">Women</a></li>
   </ul>
-  <p>
+  <p >
     <label for="amount">Price range:</label>
     <input type="text" id="amount" readonly style="border:0; color:#f6931f; font-weight:bold;">
   </p>
   <div id="slider-range"></div>
-  <button class="searchbtn">Buscar</button>
-
-
   <input type="text" class="search_input">
+  <button class="searchbtn">Search</button>
+
+
 </nav>
 
-<table class="table">
-  <thead>
-    <tr>
-      <th>#</th>
-      <th>Nombre</th>
-      <th>Precio</th>
-      <th>Peso</th>
-      <th>Calificación</th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    {{#each list}}
-      <tr>
-        <td>{{ @index }}</td>
-        <td>
-          <a href="/products/{{ name }}/{{ _id }}">
-            {{ name }}
-          </a>
-        </td>
-        <td class="product__price">$ {{ price }}</td>
-        <td>{{ weight }}</td>
-        <td>{{ rating }}</td>
-        <td>
-          <button class="product__add_to_cart"
+
+<article class="list">
+{{#each list}}
+<div class="product">
+  <a href="/store/{{name}}/{{_id}}" class="product__link">
+    <img class="product__img" src="{{img}}">
+    <h2 class="product__title">{{name}}</h2>
+  </a>
+
+  <p class="product__rate">
+    {{rate}}
+  </p>
+
+  <p class="product__price">
+    ${{price}}
+  </p>
+
+  <button class="product__add_to_cart"
             data-img="{{ img }}"
             data-name="{{ name }}"
             data-price="{{ price }}"
             data-id="{{ _id }}">
-            Agregar al carrito
+            Add to cart
           </button>
-        </td>
-      </tr>
-    {{/each}}
-  </tbody>
-</table>
+</div>
+{{/each}}
+</article>
+
+
+</div>
 
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>

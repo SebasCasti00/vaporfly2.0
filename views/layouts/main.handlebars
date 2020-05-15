@@ -1,16 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nike Store</title>
     <link rel="stylesheet" href="/styles/style.css">
 </head>
+
 <body>
-        <header class="mainheader">
+    <header class="mainheader">
         <div class="container mainheader__container">
             <a href="#">
-                <img class="mainheader__logo" src="https://www.nicepng.com/png/full/433-4335966_white-nike-logo-transparent-background.png" alt="Nike logo">
+                <img class="mainheader__logo"
+                    src="https://www.nicepng.com/png/full/433-4335966_white-nike-logo-transparent-background.png"
+                    alt="Nike logo">
             </a>
 
             <nav class="mainnav">
@@ -19,58 +23,89 @@
                     <a href="#" class="mainnav__link">WOMEN</a>
                     <a href="#" class="mainnav__link">MEN</a>
                     <a href="#" class="mainnav__link">KIDS</a>
-                    <a href="#" class="mainnav__link">STORE</a>
+                    <a href="/store" class="mainnav__link">STORE</a>
 
                     <section class="container mainnav__plus">
                         <input type="text" placeholder="Search" class="mainnav__input">
                         <a href="#" class="mainnav__link">SEARCH</a>
                         <a href="#" class="mainnav__link">LOGIN</a>
                         <div class="cart">
-      carrito: ($ <span class="cart__total">0</span>)
-      <button class="cart__btn">
-        0
-      </button>
-      <div class="cart__list"></div>
-    </div>
+                            <i class="fas fa-shopping-cart"></i>
+                            cart: ($ <span class="cart__total">0</span>)
+                            <a href="/cart">
+
+                                <button class="cart__btn">
+                                    0
+                                </button>
+                            </a>
+                        </div>
                     </section>
                 </div>
             </nav>
         </div>
     </header>
 
-        {{{ body }}}
+    {{{ body }}}
 
-        <footer class="footer">
+    <footer class="footer">
         <div class="footer__container">
             <section class="footer__column">
                 <p class="footer__title">NIKE</p>
                 <ul>
-                    <a href="#" class="footer__link"><li>Teardown</li></a>
-                    <a href="#" class="footer__link"><li>News</li></a>
-                    <a href="#" class="footer__link"><li>Parners</li></a>
-                    <a href="#" class="footer__link"><li>About us</li></a>
-                    <a href="#" class="footer__link"><li>Contact us</li></a>
-                    <a href="#" class="footer__link"><li>Terms of Use</li></a>
+                    <a href="#" class="footer__link">
+                        <li>Teardown</li>
+                    </a>
+                    <a href="#" class="footer__link">
+                        <li>News</li>
+                    </a>
+                    <a href="#" class="footer__link">
+                        <li>Parners</li>
+                    </a>
+                    <a href="#" class="footer__link">
+                        <li>About us</li>
+                    </a>
+                    <a href="#" class="footer__link">
+                        <li>Contact us</li>
+                    </a>
+                    <a href="#" class="footer__link">
+                        <li>Terms of Use</li>
+                    </a>
                 </ul>
             </section>
 
             <section class="footer__column">
                 <p class="footer__title">SOCIAL</p>
                 <ul>
-                    <a href="#" class="footer__link"><li>Facebook</li></a>
-                    <a href="#" class="footer__link"><li>Twitter</li></a>
-                    <a href="#" class="footer__link"><li>YouTube</li></a>
+                    <a href="#" class="footer__link">
+                        <li>Facebook</li>
+                    </a>
+                    <a href="#" class="footer__link">
+                        <li>Twitter</li>
+                    </a>
+                    <a href="#" class="footer__link">
+                        <li>YouTube</li>
+                    </a>
                 </ul>
             </section>
 
             <section class="footer__column">
                 <p class="footer__title">ACTIVITY</p>
                 <ul>
-                    <a href="#" class="footer__link"><li>Influencers</li></a>
-                    <a href="#" class="footer__link"><li>Affiliate</li></a>
-                    <a href="#" class="footer__link"><li>Co-branding</li></a>
-                    <a href="#" class="footer__link"><li>Honor</li></a>
-                    <a href="#" class="footer__link"><li>Giveaway</li></a>
+                    <a href="#" class="footer__link">
+                        <li>Influencers</li>
+                    </a>
+                    <a href="#" class="footer__link">
+                        <li>Affiliate</li>
+                    </a>
+                    <a href="#" class="footer__link">
+                        <li>Co-branding</li>
+                    </a>
+                    <a href="#" class="footer__link">
+                        <li>Honor</li>
+                    </a>
+                    <a href="#" class="footer__link">
+                        <li>Giveaway</li>
+                    </a>
                 </ul>
             </section>
 
@@ -79,14 +114,15 @@
                     <p class="newsletter__text">Suscribe to our newsletter!</p>
                     <div class="newsletter__inputscontainer">
                         <input class="newsletter__inputs" type="text" placeholder="Name">
-                    <input class="newsletter__inputs" type="text" placeholder="Mail">
+                        <input class="newsletter__inputs" type="text" placeholder="Mail">
                     </div>
                     <button class="newsletter__button" type="submit">SUBMIT</button>
-            </section>
+                </section>
             </section>
         </div>
 
     </footer>
     <script src="/scripts/cart.js"></script>
 </body>
+
 </html>

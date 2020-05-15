@@ -1,0 +1,61 @@
+.searchbtn{
+    background-color: grey;
+    border-radius: 4px;
+    border: none;
+    height: 36px;
+    width: 70px;
+    font-size: medium;
+    font-family: 'Odibee Sans';
+    opacity: 1;
+    margin: 20px auto;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center; 
+}
+
+.mainstore{
+    position: relative;
+}
+
+.list{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.product{
+    display: flex;
+    justify-content: center;
+    position: relative;
+    margin: 30px;
+    min-width: 200px;
+}
+
+.product__img{
+    height: 200px;
+    border-radius: 10px;
+}
+
+.product__link{
+    text-decoration: none;
+    color: whitesmoke;
+}
+
+.product__add_to_cart{
+    background-color: whitesmoke;
+  border-radius: 4px;
+  border: none;
+  height: 40px;
+  width: 70px;
+  font-size: medium;
+  font-family: 'Odibee Sans';
+  opacity: 1;
+  margin: 20px auto;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.product__price{
+    font-size: small;
+}
